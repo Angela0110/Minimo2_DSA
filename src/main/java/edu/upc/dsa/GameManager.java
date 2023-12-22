@@ -10,6 +10,10 @@ import java.util.List;
 
 public interface GameManager {
 
+    //Minimo2
+    public Question addQuestion(String title, String messsage, String sender);
+    public List<Question> findAllQuestions();
+
     // Jugador manager
     public Jugador addJugador(String username, String mail, String pasword) throws NotAnEmailException, FaltanDatosException, JugadorYaExisteException;
     public Jugador addJugador(Jugador jugador) throws NotAnEmailException, FaltanDatosException, JugadorYaExisteException;

@@ -14,25 +14,29 @@ import java.sql.SQLIntegrityConstraintViolationException;
 public class GameManagerImpl implements GameManager {
 
     private static edu.upc.dsa.GameManager instance;
-    /*protected List<Partida> partidas;
-    protected Map<String, Jugador> jugadores;
-    protected List<Avatar> avatares;
-    protected List<Mapa> mapas;
-    protected List<Tienda> productos;*/
+    protected List<Question> questions;
 
     final static Logger logger = Logger.getLogger(GameManagerImpl.class);
     private GameManagerImpl() {
-        /*this.partidas = new LinkedList<>();
-        this.jugadores = new HashMap<>();
-        this.avatares = new LinkedList<>();
-        this.mapas = new LinkedList<>();
-        this.productos = new LinkedList<>();*/
+        this.questions = new LinkedList<>();
     }
 
     public static edu.upc.dsa.GameManager getInstance() {
         if (instance==null)
             instance = new GameManagerImpl();
         return instance;
+    }
+
+    public Question addQuestion(String title, String message, String sender){
+        Question question = new Question(title, message, sender);
+        questions.add(question);
+        logger.info(question.getTitle() + question.getMessage() + question.getDate() + question.getSender());
+        logger.info(questions);
+        return question;
+    }
+
+    public List<Question> findAllQuestions(){
+        return this.questions;
     }
 
     public int PartidaSize() {      // Número de partidas creadas

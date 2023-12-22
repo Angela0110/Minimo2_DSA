@@ -40,7 +40,6 @@ public class JugadorService {
     }
 
 
-
     @POST
     @ApiOperation(value = "register a new Jugador")
     @ApiResponses(value = {
